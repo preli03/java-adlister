@@ -14,6 +14,7 @@
 <body>
 <h1>Welcome to your Website Template Customer</h1>
 
+
 <%-- Your JSP content --%>
 
 
