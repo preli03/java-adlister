@@ -22,5 +22,19 @@
   } %>
 </ul>
 <p>Delivery Address: <%= request.getParameter("address") %></p>
+
+<br>
+
+25 multiplied by 4 equals <%= 25*4 %>
+
+<br>
+
+
+
+Is 75 less than 69? <%= 75 < 69 %>
+
+<br>
+Converting a string to uppercase: <%="Welcome to Pizza Pizza".toUpperCase() %>
+
 </body>
 </html>
