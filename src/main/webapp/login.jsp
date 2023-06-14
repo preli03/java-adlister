@@ -21,9 +21,11 @@
 <head>
   <meta charset="UTF-8">
     <title>Login</title>
+  <%@ include file="partials/head.jsp" %>
 </head>
 <body>
 <h2>Login</h2>
+<h4>Please Login:</h4>
 <form action="login.jsp" method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username"><br><br>
