@@ -12,7 +12,7 @@ public class Author {
         return "Author [id=" + id + ", name=" + name + "]";
     }
 
-    public void setName(String douglasAdams) {
+    public void setName(String name) {
 
     }
 

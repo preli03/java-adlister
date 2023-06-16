@@ -14,7 +14,7 @@ public class Album {
         return "Album [id=" + id + ", albumName=" + albumName + ", artistName=" + artistName + ", sales=" + sales + "]";
     }
 
-    public void setAlbumName(String thriller) {
+    public void setAlbumName(String albumName) {
 
     }
 
@@ -24,10 +24,11 @@ public class Album {
     }
 
     public int getId() {
+
         return id;
     }
 
-    public void setArtistName(String michaelJackson) {
+    public void setArtistName(String artistName) {
 
     }
 
