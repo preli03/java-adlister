@@ -51,3 +51,6 @@ added jsp files
 added pizza order
 added color page
 still working guessing game
+
+
+adding my database and using JDBC
