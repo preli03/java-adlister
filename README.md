@@ -54,4 +54,4 @@ still working guessing game
 
 
 adding my database and using JDBC
-executing db ads
+finished jdbcexercise login db
