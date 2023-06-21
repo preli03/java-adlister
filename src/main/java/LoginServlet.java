@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.FileStore;
-import java.util.List
 
 import static java.lang.System.out;
 
@@ -24,12 +23,12 @@ public class LoginServlet extends HttpServlet {
         if (validAttempt) {
             request.getSession().setAttribute("user", username); // Set "user" attribute in session
             response.sendRedirect("/profile");
-            FileStore session;
+            FileStore session = null;
             String loggedInUser = (String) session.getAttribute("user");
             if (loggedInUser != null) {
                 out.println("Welcome"); // Modify UserUtils.getUserFullName to retrieve the full name or appropriate user information
             }
-%>
+
         } else {
             response.sendRedirect("/login");
         }
