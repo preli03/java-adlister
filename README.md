@@ -51,7 +51,7 @@ added jsp files
 added pizza order
 added color page
 still working guessing game
-
+finished mvc exercise
 
 adding my database and using JDBC
 finished jdbcexercise login db
