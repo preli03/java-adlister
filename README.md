@@ -52,6 +52,6 @@ added pizza order
 added color page
 still working guessing game
 finished mvc exercise
-
+cookies done
 adding my database and using JDBC
 finished jdbcexercise login db
