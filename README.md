@@ -55,3 +55,4 @@ finished mvc exercise
 cookies done
 adding my database and using JDBC
 finished jdbcexercise login db
+finishing practices 
