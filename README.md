@@ -56,3 +56,6 @@ cookies done
 adding my database and using JDBC
 finished jdbcexercise login db
 finishing practices 
+user input register jsp
+cross site scripting
+handling user input error cases and provide feedback to user
