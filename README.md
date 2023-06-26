@@ -59,3 +59,4 @@ finishing practices
 user input register jsp
 cross site scripting
 handling user input error cases and provide feedback to user
+added hashing for passwords
