@@ -35,4 +35,5 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 (1,	'user1',	'user1@example.com',	0),
 (2,	'user2',	'user2@example.com',	0);
 
+
 -- 2023-06-26 14:41:42

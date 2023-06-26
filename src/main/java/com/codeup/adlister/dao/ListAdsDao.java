@@ -38,7 +38,7 @@ public class ListAdsDao implements Ads {
         ads.add(new Ad(
             2,
             1,
-            "Camaro ZL!",
+            "Camaro ZL1",
             "Drive on with this classic!"
         ));
         ads.add(new Ad(
