@@ -19,7 +19,8 @@ public class DaoFactory {
 
     public static Users getUsersDao(){
         if(usersDao == null){
-            usersDao = new MySQLUsersDao(connection) {
+            Object Connection = null;
+            usersDao = new MySQLUsersDao() {
                 @Override
                 public Long insert(User user) {
                     return null;

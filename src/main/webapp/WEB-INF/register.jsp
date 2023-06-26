@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>User Registration</h1>
-<form action="register" method="post">
+<form action=${pageContext.request.contextPath}/register method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username" required><br>
 

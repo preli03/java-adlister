@@ -1,6 +1,5 @@
 package com.codeup.adlister.controllers;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,4 +30,4 @@ public class RegisterServlet extends HttpServlet {
         // TODO: create a new user based off of the submitted information
         // TODO: if a user was successfully created, send them to the login page
     }
-}
+

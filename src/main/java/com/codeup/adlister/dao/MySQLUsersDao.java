@@ -11,10 +11,6 @@ public abstract class MySQLUsersDao implements Users{
 
     private Connection connection;
 
-    public MySQLUsersDao(Connection connection){
-        this.connection = connection;
-
-    }
 
 
     @Override
