@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLAdsDao implements Ads {
-    private final Connection connection;
+    private Connection connection;
 
     public MySQLAdsDao(Config config) {
         try {
@@ -30,7 +30,7 @@ public class MySQLAdsDao implements Ads {
         try {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM ads");
-            return createAdsFromResults(rs);
+            return createAdsFromResultSet(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
@@ -66,10 +66,18 @@ public class MySQLAdsDao implements Ads {
     }
 
     private List<Ad> createAdsFromResultSet(ResultSet rs) throws SQLException {
-        List<Ad> ads = new ArrayList<>();
+       long id = rs.getLong("id");
+       String title = rs.getString("title");
+       String description = rs.getString("description");
+
+
+
+       List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
             ads.add(extractAd(rs));
         }
         return ads;
     }
+
+
 }
