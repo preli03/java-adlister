@@ -9,15 +9,22 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-<div class="container">
-    <h1>Here Are all the ads!</h1>
+<div class="container-fluid">
+    <h1 class="text-center my-3">Here Are all the ads!</h1>
+</div>
 
+<div class="container-fluid">
+    <div class="row d-flex justify-content-around">
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+        <div class="card col-sm-4 m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h4>${ad.title}</h4>
+                <p>${ad.description}</p>
+                <a href="/ads" class="card-link">View Ad</a>
+            </div>
         </div>
     </c:forEach>
+    </div>
 </div>
 
 </body>
