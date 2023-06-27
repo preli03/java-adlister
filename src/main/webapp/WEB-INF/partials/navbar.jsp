@@ -12,7 +12,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Ads</a>
+                       data-bs-toggle="dropdown" aria-expanded="false">View Ads</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/ads">Clothes</a></li>
                         <li><a class="dropdown-item" href="/ads">Electronics</a></li>
@@ -20,6 +20,9 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/ads">View all Ads</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ads/create">Create Ad</a>
                 </li>
             </ul>
             <form class="d-flex my-auto">
@@ -39,6 +42,7 @@
                            data-bs-toggle="dropdown" aria-expanded="false">${sessionScope.user.username}</a>
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/ads/create">Create Ad</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
