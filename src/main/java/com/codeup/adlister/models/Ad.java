@@ -24,9 +24,16 @@ public class Ad {
         this.description = description;
     }
 
-//    public void convertFromArrayToList(String[] categories) {
-//
-//    }
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", categories=" + categories +
+                '}';
+    }
 
     public long getId() {
         return id;

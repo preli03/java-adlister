@@ -17,4 +17,6 @@ public interface Ads {
     void updateTitle(Ad ad, String newTitle);
 
     void updateDescription(Ad ad, String newDescription);
+
+    Ad fetchAdById(int id);
 }

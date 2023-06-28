@@ -44,6 +44,11 @@ public class ListAdsDao implements Ads {
     public void updateDescription(Ad ad, String newDescription) {
     }
 
+    @Override
+    public Ad fetchAdById(int id) {
+        return null;
+    }
+
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
         ads.add(new Ad(
