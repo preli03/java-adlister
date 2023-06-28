@@ -27,6 +27,28 @@ public class ListAdsDao implements Ads {
         return ad.getId();
     }
 
+    @Override
+    public List<Ad> byCategory(String categoryName) {
+        return null;
+    }
+
+    @Override
+    public void delete(Ad ad) {
+    }
+
+    @Override
+    public void updateTitle(Ad ad, String newTitle) {
+    }
+
+    @Override
+    public void updateDescription(Ad ad, String newDescription) {
+    }
+
+    @Override
+    public Ad fetchAdById(int id) {
+        return null;
+    }
+
     private List<Ad> generateAds() {
         List<Ad> ads = new ArrayList<>();
         ads.add(new Ad(
@@ -55,4 +77,6 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+
+
 }
