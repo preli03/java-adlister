@@ -11,4 +11,10 @@ public interface Ads {
     Long insert(Ad ad);
 
     List<Ad> byCategory(String categoryName);
+
+    void delete(Ad ad);
+
+    void updateTitle(Ad ad, String newTitle);
+
+    void updateDescription(Ad ad, String newDescription);
 }
