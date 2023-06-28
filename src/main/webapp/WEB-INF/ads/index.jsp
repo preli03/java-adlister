@@ -25,3 +25,5 @@
 
 </body>
 </html>
+<%-- this is for that drop down thing, needed to make sure it was possible. --%>
+<%-- <a href="/ads?attributeName=exampleValue&attributeValue=123">Click me</a> --%>

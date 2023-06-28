@@ -52,6 +52,21 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> byCategory(String categoryName) {
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM ads_categories JOIN ads ON ads_categories.ad_id = id WHERE category_id = ? AND status = 'active';";
+        Long catId = DaoFactory.getCategoriesDao().fetchCategoryId(categoryName);
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setLong(1,catId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         Ad ad = new Ad(
             rs.getLong("id"),

@@ -13,6 +13,18 @@ import java.io.IOException;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
+//        request.setAttribute("ads", DaoFactory.getAdsDao().byCategory("Clothes"));
+
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 }
+
+
+/*
+this if for the drop down thing again. pls ignore
+    String attributeName = request.getParameter("attributeName");
+        String attributeValue = request.getParameter("attributeValue");
+        System.out.println(attributeValue);
+        System.out.println(attributeName);
+*/
+
