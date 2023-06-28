@@ -3,8 +3,6 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
-import lombok.var;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -23,6 +19,8 @@ public class LoginServlet extends HttpServlet {
 
             return;
         }
+        String redirectURL = request.getParameter("redirect");
+        request.setAttribute("redirect", redirectURL);
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
@@ -32,25 +30,25 @@ public class LoginServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
         String error = null;
 
-        if (user == null) {
-            error = "Invalid username";
-        } else {
-            boolean validAttempt = Password.check(password, user.getPassword());
-            if (!validAttempt) {
-                error = "Invalid password";
-            }
+        if (user == null || !Password.check(password, user.getPassword())) {
+            error = "Please Try Again";
         }
 
         if (error != null) {
             request.setAttribute("error", error);
+            String redirectURL = request.getParameter("redirect");
+            request.setAttribute("redirect", redirectURL);
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+            String redirectURL = request.getParameter("redirect");
+            if (redirectURL != null && !redirectURL.isEmpty()) {
+                response.sendRedirect(redirectURL);
+            } else {
+                response.sendRedirect("/profile");
+            }
+
         }
     }
-
-
-
 }
 
