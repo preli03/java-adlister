@@ -11,9 +11,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAds" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">View Ads</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownAds">
                         <li><a class="dropdown-item" href="/ads">Clothes</a></li>
                         <li><a class="dropdown-item" href="/ads">Electronics</a></li>
                         <li><a class="dropdown-item" href="/ads">Vehicles</a></li>
@@ -38,9 +38,9 @@
                 <c:otherwise>
                     <div class="dropdown">
                     <li class="nav navbar-nav navbar-right">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">${sessionScope.user.username}</a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownUser">
                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             <li><a class="dropdown-item" href="/ads/create">Create Ad</a></li>
                             <li><hr class="dropdown-divider"></li>
