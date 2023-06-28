@@ -64,6 +64,45 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public void updateUsername(User user, String newUsername) {
+        try {
+            String insertQuery = "UPDATE users SET username = ? WHERE id = ?;";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, newUsername);
+            stmt.setLong(2, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating username.", e);
+        }
+    }
+
+    @Override
+    public void updateEmail(User user, String newEmail) {
+        try {
+            String insertQuery = "UPDATE users SET email = ? WHERE id = ?;";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, newEmail);
+            stmt.setLong(2, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating email.", e);
+        }
+    }
+
+    @Override
+    public void updatePassword(User user, String newPassword) {
+        try {
+            String insertQuery = "UPDATE users SET password = ? WHERE id = ?;";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, newPassword);
+            stmt.setLong(2, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating password.", e);
+        }
+    }
+
 
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
@@ -76,5 +115,7 @@ public class MySQLUsersDao implements Users {
             rs.getString("password")
         );
     }
+
+
 
 }
