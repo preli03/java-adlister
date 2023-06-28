@@ -5,6 +5,21 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <style>
+        .ads {
+            background-color: lightgrey;
+        }
+
+        i {
+            background-color: lightgrey;
+        }
+
+        .editButtons {
+            background-color: lightgrey;
+            border: none;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/376cc6886e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -13,15 +28,20 @@
     <h1>Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <h2>${ad.title}</h2>
+        <div class="col-md-6 border border-secondary rounded p-2 m-3 ads d-flex flex-column">
+            <h2><strong>${ad.title}</strong></h2>
             <p>${ad.description}</p>
+            <p><strong>Categories: </strong>
         <c:forEach var="cat" items="${ad.getCategories()}">
-            <p>${cat}</p>
+            ${cat}
         </c:forEach>
+            </p>
+            <c:choose>
+            <c:when test="${ad.getUserId() == sessionScope.user.getId()}">
+            <div class="align-self-end">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal${ad.title}">
-                Edit Listing
+            <button type="button" class="editButtons" data-bs-toggle="modal" data-bs-target="#editModal${ad.title}">
+                <i class="fa-solid fa-pencil"></i>
             </button>
             <!-- Modal -->
             <div class="modal fade" id="editModal${ad.title}" tabindex="-1" aria-labelledby="editModalLabel${ad.title}" aria-hidden="true">
@@ -52,8 +72,8 @@
             </div>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal${ad.title}">
-                Delete Listing
+            <button type="button" class="editButtons" data-bs-toggle="modal" data-bs-target="#deleteModal${ad.title}">
+                <i class="fa-solid fa-trash-can"></i>
             </button>
             <!-- Modal -->
             <div class="modal fade" id="deleteModal${ad.title}" tabindex="-1" aria-labelledby="deleteModalLabel${ad.title}" aria-hidden="true">
@@ -75,6 +95,9 @@
                     </div>
                 </div>
             </div>
+            </div>
+            </c:when>
+            </c:choose>
         </div>
     </c:forEach>
 </div>
