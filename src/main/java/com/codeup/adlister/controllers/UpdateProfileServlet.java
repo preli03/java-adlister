@@ -32,8 +32,8 @@ public class UpdateProfileServlet extends HttpServlet {
         String confirmNewPassword = request.getParameter("confirmNewPassword");
 
         //reset attributes if they were set in a previous screen
-        session.setAttribute("error", false);
-        session.setAttribute("success", false);
+        session.setAttribute("updateError", false);
+        session.setAttribute("updateSuccess", false);
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
@@ -41,8 +41,8 @@ public class UpdateProfileServlet extends HttpServlet {
                 || currentPassword.isEmpty();
 
         if (inputHasErrors) {
-            session.setAttribute("error", true);
-            session.setAttribute("errorMessage", "You cannot leave username, email, or current password field blank.");
+            session.setAttribute("updateError", true);
+            session.setAttribute("updateErrorMessage", "You cannot leave username, email, or current password field blank.");
             response.sendRedirect("/updateProfile");
             return;
         }
@@ -58,8 +58,8 @@ public class UpdateProfileServlet extends HttpServlet {
             //update username only if it changed
             if(!username.equals(user.getUsername())) {
                 if(DaoFactory.getUsersDao().checkIfUsernameExists(username)) {
-                    session.setAttribute("error", true);
-                    session.setAttribute("errorMessage", "Username already exists");
+                    session.setAttribute("updateError", true);
+                    session.setAttribute("updateErrorMessage", "Username already exists");
                     response.sendRedirect("/updateProfile");
                     return;
                 } else {
@@ -77,8 +77,8 @@ public class UpdateProfileServlet extends HttpServlet {
             //update password only if they filled it out
             if(!newPassword.isEmpty() && !confirmNewPassword.isEmpty()) {
                 if(!newPassword.equals(confirmNewPassword)) {
-                    session.setAttribute("error", true);
-                    session.setAttribute("errorMessage", "Your new passwords do not match!");
+                    session.setAttribute("updateError", true);
+                    session.setAttribute("updateErrorMessage", "Your new passwords do not match!");
                 } else {
                     String hash = Password.hash(newPassword);
                     DaoFactory.getUsersDao().updatePassword(user, hash);
@@ -87,13 +87,13 @@ public class UpdateProfileServlet extends HttpServlet {
                 }
             }
         } else {
-            session.setAttribute("error", true);
-            session.setAttribute("errorMessage", "Your password was incorrect.");
+            session.setAttribute("updateError", true);
+            session.setAttribute("updateErrorMessage", "Your password was incorrect.");
         }
 
         if(profileUpdated) {
-            session.setAttribute("success", true);
-            session.setAttribute("successMessage", "Your profile was successfully updated!");
+            session.setAttribute("updateSuccess", true);
+            session.setAttribute("updateSuccessMessage", "Your profile was successfully updated!");
         }
         response.sendRedirect("/updateProfile");
     }

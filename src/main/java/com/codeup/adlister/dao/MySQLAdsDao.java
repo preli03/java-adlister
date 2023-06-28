@@ -128,7 +128,6 @@ public class MySQLAdsDao implements Ads {
             rs.getString("description")
         );
         ad.setCategories(DaoFactory.getAdsCategoriesDao().fetchCategoryNamesForAd(ad.getId()));
-        System.out.println("set cats from ad creation: " + ad.getCategories());
         return ad;
     }
 

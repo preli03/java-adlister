@@ -33,7 +33,6 @@ public class MySQLCategoriesDao implements Categories{
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all categories.", e);
         }
-        System.out.println(categories);
         return categories;
     }
     @Override

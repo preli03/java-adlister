@@ -37,11 +37,11 @@
       <input id="confirmNewPassword" name="confirmNewPassword" class="form-control" type="password">
     </div>
     <c:choose>
-      <c:when test="${error == true}">
-        <p style="color: red;">${errorMessage}</p>
+      <c:when test="${updateError == true}">
+        <p style="color: red;">${updateErrorMessage}</p>
       </c:when>
-      <c:when test="${success == true}">
-        <p style="color: green;">${successMessage}</p>
+      <c:when test="${updateSuccess == true}">
+        <p style="color: green;">${updateSuccessMessage}</p>
       </c:when>
       <c:otherwise>
         <p></p>

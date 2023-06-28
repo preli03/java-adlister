@@ -26,14 +26,15 @@
 
 <div class="container">
     <h1>Here Are all the ads!</h1>
-
+<%--Make div below a d-flex once naimes code with the screen width is added --%>
+    <div>
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6 border border-secondary rounded p-2 m-3 ads d-flex flex-column">
             <h2><strong>${ad.title}</strong></h2>
             <p>${ad.description}</p>
             <p><strong>Categories: </strong>
         <c:forEach var="cat" items="${ad.getCategories()}">
-            ${cat}
+            ${cat},
         </c:forEach>
             </p>
             <c:choose>
@@ -100,6 +101,7 @@
             </c:choose>
         </div>
     </c:forEach>
+    </div>
 </div>
 
 </body>
