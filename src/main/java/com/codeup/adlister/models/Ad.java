@@ -1,10 +1,15 @@
 package com.codeup.adlister.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
     private String title;
     private String description;
+
+    private List<String> categories;
 
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
@@ -17,6 +22,17 @@ public class Ad {
         this.userId = userId;
         this.title = title;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", categories=" + categories +
+                '}';
     }
 
     public long getId() {
@@ -49,5 +65,13 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 }

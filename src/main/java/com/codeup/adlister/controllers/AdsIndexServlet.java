@@ -5,6 +5,7 @@ import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,18 +18,68 @@ import java.util.List;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
+//        request.setAttribute("ads", DaoFactory.getAdsDao().byCategory("Clothes"));
+
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String title = request.getParameter("adTitle");
-        List<Ad> adSearched = DaoFactory.getAdsDao().findByAdTitle(title);
 
-        if (adSearched == null) {
-            response.sendRedirect("/ads");
-            return;
-        } else {
-            request.getSession().setAttribute("title", title);
-            response.sendRedirect("/details");
+//     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//         String title = request.getParameter("adTitle");
+//         List<Ad> adSearched = DaoFactory.getAdsDao().findByAdTitle(title);
+
+//         if (adSearched == null) {
+//             response.sendRedirect("/ads");
+//             return;
+//         } else {
+//             request.getSession().setAttribute("title", title);
+//             response.sendRedirect("/details");
+//         }
+//     }
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        int adId = Integer.parseInt(request.getParameter("adId"));
+        String option = request.getParameter("option");
+
+        Ad currentAd = DaoFactory.getAdsDao().fetchAdById(adId);
+
+        if(option.equals("edit")) {
+            // validate input
+            boolean inputHasErrors = title.isEmpty()
+                    || description.isEmpty();
+
+            if (inputHasErrors) {
+                response.sendRedirect("/ads");
+                return;
+            }
+
+            if (!title.equals(currentAd.getTitle())) {
+                DaoFactory.getAdsDao().updateTitle(currentAd, title);
+                currentAd.setTitle(title);
+            }
+            if (!description.equals(currentAd.getDescription())) {
+                DaoFactory.getAdsDao().updateDescription(currentAd, description);
+                currentAd.setDescription(description);
+            }
         }
+        if(option.equals("delete")) {
+            DaoFactory.getAdsDao().delete(currentAd);
+        }
+
+        response.sendRedirect("/ads");
     }
+
+
 }
+
+
+/*
+this if for the drop down thing again. pls ignore
+    String attributeName = request.getParameter("attributeName");
+        String attributeValue = request.getParameter("attributeValue");
+        System.out.println(attributeValue);
+        System.out.println(attributeName);
+*/
+
