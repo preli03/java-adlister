@@ -11,6 +11,7 @@
 
 <div class="container-fluid">
     <h1 class="text-center my-3">Here Are all the ads!</h1>
+    <p class="text-center mb-2">Click any ad to view details</p>
 </div>
 
 <div class="container-fluid">
@@ -20,7 +21,6 @@
                 <div class="card-body" onclick="handleClick(${ad.id})">
                     <h4 id="title-${ad.id}">${ad.title}</h4>
                     <p>${ad.description}</p>
-                        <%--                <a class="card-link" href="/ads">View Details</a>--%>
                 </div>
             </div>
         </c:forEach>

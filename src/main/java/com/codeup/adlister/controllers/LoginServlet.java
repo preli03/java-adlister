@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
-        Long userId = user.getId();
 
         if (user == null) {
             response.sendRedirect("/login");
@@ -36,7 +35,6 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
-            request.getSession().setAttribute("userId", userId);
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
         } else {

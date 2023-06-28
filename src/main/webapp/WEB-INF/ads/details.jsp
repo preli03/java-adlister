@@ -13,27 +13,20 @@
     <h1 class="text-center my-3">Ad Details</h1>
 </div>
 
-<%--<div class="container-fluid">--%>
-<%--  <h1 class="text-center my-3">${ad.title}</h1>--%>
-<%--  <p>${ad.description}</p>--%>
-<%--  <a class="card-link" href="/ads">Return to Ads</a>--%>
-<%--</div>--%>
-
 <div class="container-fluid">
-<%--  <div class="d-flex justify-content-center">--%>
-<c:forEach var="ad" items="${ads}">
-    <div class="card text-center">
-        <div class="card-header">
-            <h4 id="title-${ad.id}">${ad.title}</h4>
+    <c:forEach var="ad" items="${ads}">
+        <div class="card text-center">
+            <div class="card-body">
+                <div>
+                <img src="http://placekitten.com/300/200" class="card-img-top" alt="..." style="width: 300px; height: 200px;">
+                </div>
+                <h4 id="title-${ad.id}">${ad.title}</h4>
+                <p>${ad.description}</p>
+                <a class="card-link" href="/ads">Return to Ads</a>
+            </div>
         </div>
-        <div class="card-body">
-            <p>${ad.description}</p>
-            <a class="card-link" href="/ads">Return to Ads</a>
-        </div>
-    </div>
-</c:forEach>
-  </div>
-<%--</div>--%>
+    </c:forEach>
+</div>
 
 </body>
 </html>
